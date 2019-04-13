@@ -1,8 +1,12 @@
 from setuptools import setup
 
+version = None
+with open('VERSION.txt', 'r') as fp:
+    version = fp.read()
+
 setup(
     name='shoppinglist',
-    version='0.1-dev',
+    version=version,
     entry_points={
       'console_scripts': [
           'shoppinglist_launcher=shoppinglist.__main__:main'
