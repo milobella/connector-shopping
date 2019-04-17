@@ -1,4 +1,5 @@
 sanic
 pymongo
 everett
+configobj
 everett[ini]
