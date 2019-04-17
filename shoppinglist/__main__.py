@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding: utf8
-from bson.json_util import dumps as bson_dumps
+from bson.json_util import dumps
 from sanic import response, Sanic
 from sanic.request import Request
 
@@ -51,7 +51,7 @@ async def delete_items(request: Request):
 
 
 def _build_resp(result):
-    return response.json(result, dumps=bson_dumps)
+    return response.json(result, dumps=dumps)
 
 
 if __name__ == '__main__':
