@@ -7,6 +7,7 @@ with open('VERSION.txt', 'r') as fp:
 setup(
     name='shoppinglist',
     version=version,
+    packages=['shoppinglist'],
     entry_points={
       'console_scripts': [
           'shoppinglist_launcher=shoppinglist.__main__:main'
