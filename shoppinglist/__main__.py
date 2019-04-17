@@ -1,28 +1,30 @@
 #!/usr/bin/env python
 # coding: utf8
 from bson.json_util import dumps as bson_dumps
-import configparser
-
 from sanic import response, Sanic
 from sanic.request import Request
 
+from shoppinglist.configuration import read_config
 from shoppinglist.database import Database
 
 # Initialize the config
-_config = configparser.ConfigParser()
-_config.read('shoppinglist.ini')
+_config = read_config('shoppinglist.ini')
 
 # Initialize the sanic app
 _app = Sanic()
 
-_db = Database(_config['mongo']['host'], _config['mongo'].getint('port'), _config['mongo']['database'])
+_db = Database(
+    _config('host', namespace='mongo'),
+    _config('port', namespace='mongo', parser=int),
+    _config('database', namespace='mongo'),
+)
 
 
 def main():
     # Run the app
     _app.run(
-        host=_config['server']['host'],
-        port=_config['server'].getint('port')
+        host=_config('host', namespace='server'),
+        port=_config('port', namespace='server', parser=int),
     )
 
 

@@ -1,3 +1,5 @@
 sanic
 pymongo
 bson
+everett
+everett[ini]
