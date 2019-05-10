@@ -15,7 +15,7 @@ class Database:
 
     @property
     def _client(self):
-        return MongoClient(self._host, self._port)
+        return MongoClient(self._host, self._port, readPreference='nearest')
 
     def get_items_by_user(self, user_id: str=DEFAULT_USER):
         with self._client as client:
