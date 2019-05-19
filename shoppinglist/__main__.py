@@ -46,7 +46,10 @@ async def get_items(request: Request):
 
 @_app.route('/items', methods=["DELETE"])
 async def delete_items(request: Request):
-    _db.delete_items_by_user()
+    if 'items' in request.args:
+        _db.delete_items_by_user(request.args["items"])
+    else:
+        _db.empty_list_by_user()
     return response.text("", status=204)
 
 
