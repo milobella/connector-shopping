@@ -14,10 +14,8 @@ fullnameOverride: ""
 containerPort: 5555
 
 env:
-  - name: MONGO_HOST
-    value: "mongo-0.mongo"
-  - name: MONGO_PORT
-    value: "27017"
+  - name: MONGO_URL
+    value: "mongo-0.mongo:27017"
   - name: SERVER_PORT
     value: "5555"
 

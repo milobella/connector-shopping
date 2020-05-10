@@ -14,8 +14,7 @@ _config = read_config('shoppinglist.ini')
 _app = Sanic()
 
 _db = Database(
-    _config('host', namespace='mongo'),
-    _config('port', namespace='mongo', parser=int),
+    _config('url', namespace='mongo'),
     _config('database', namespace='mongo'),
 )
 
