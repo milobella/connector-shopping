@@ -7,14 +7,13 @@ class Database:
     DEFAULT_USER = "default"
     USER_TAG = "user_id"
 
-    def __init__(self, host, port, database):
-        self._host = host
-        self._port = port
+    def __init__(self, url, database):
+        self._url = url
         self._database = database
 
     @property
     def _client(self):
-        return MongoClient(self._host, self._port)
+        return MongoClient(self._url)
 
     def get_items_by_user(self, user_id: str = DEFAULT_USER):
         with self._client as client:
